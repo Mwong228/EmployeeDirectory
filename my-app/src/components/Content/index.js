@@ -32,6 +32,47 @@ function Content() {
         setSearch(event.target.value)
     }
 
+    function sortByFirstName(){
+        const sort = user.sort((a,b) => {
+            if(a.name.first < b.name.first){
+                return -1
+            }
+            else if(a.name.first > b.name.first){
+                return 1
+            }
+            return 0
+        })
+        setUser([...sort])
+    }
+
+    function sortByLastName(){
+        const sort = user.sort((a,b) => {
+            if(a.name.last < b.name.last){
+                return -1
+            }
+            else if(a.name.last > b.name.last){
+                return 1
+            }
+            return 0
+        })
+        setUser([...sort])
+    }
+
+    function sortByEmail(){
+        const sort = user.sort((a,b) => {
+            if(a.email < b.email){
+                return -1
+            }
+            else if(a.email > b.name.email){
+                return 1
+            }
+            return 0
+        })
+        setUser([...sort])
+    }
+
+
+
 
 
     return (
@@ -42,10 +83,10 @@ function Content() {
                     <thread>
                         <tr>
                             <th>Image</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
+                            <th onClick={sortByFirstName}>First Name</th>
+                            <th onClick={sortByLastName}>Last Name</th>
                             <th>Phone</th>
-                            <th>Email</th>
+                            <th onClick={sortByEmail}>Email</th>
                         </tr>
                     </thread>
                     <tbody>
