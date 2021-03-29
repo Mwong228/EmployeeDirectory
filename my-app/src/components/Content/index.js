@@ -19,13 +19,19 @@ function Content() {
 
     function searchEmployee() {
         console.log('Searching for:', search)
-        // const searchedUser = user.filter(filtered => search.toLowerCase().indexOf(filtered.name.first.toLowerCase())> -1 || search.toLowerCase().indexOf(filtered.name.last.toLowerCase())> -1)
-        // console.log(searchedUser)
+        const searchEmployee = user.filter(filtered => search.toLowerCase().includes(filtered.name.first.toLowerCase() || filtered.name.last.toLowerCase()))
+        console.log(searchEmployee)
+        setUser(searchEmployee)
     }
 
     function handleFormSubmit(event) {
         event.preventDefault()
-        searchEmployee()
+        if(search ===""){
+            init()
+        }
+        else {
+            searchEmployee()
+        }
     }
 
     function handleInputChange(event) {
@@ -71,24 +77,20 @@ function Content() {
         setUser([...sort])
     }
 
-
-
-
-
     return (
         <>
             <Search value={search} handleFormSubmit={handleFormSubmit} handleInputChange={handleInputChange} />
             <div class="table-responsive">
                 <table class="table table-striped table-hover">
-                    <thread>
+                    <thead>
                         <tr>
-                            <th>Image</th>
-                            <th onClick={sortByFirstName}>First Name</th>
-                            <th onClick={sortByLastName}>Last Name</th>
-                            <th>Phone</th>
-                            <th onClick={sortByEmail}>Email</th>
+                            <th scope="col">Image</th>
+                            <th scope="col" onClick={sortByFirstName}>First Name</th>
+                            <th scope="col" onClick={sortByLastName}>Last Name</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col" onClick={sortByEmail}>Email</th>
                         </tr>
-                    </thread>
+                    </thead>
                     <tbody>
                         {user.map(user =>
                         <tr>
