@@ -1,6 +1,7 @@
 # EmployeeDirectory
 
 ## Heroku 
+https://mwong228-employee-directory.herokuapp.com/
 
 ## Description
 In this Application, it is built with React and fetches Data using Axios to generate random employees. A list of employees will populate and you can filter them out by searching for their names. 
